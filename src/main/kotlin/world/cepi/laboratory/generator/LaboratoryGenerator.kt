@@ -12,7 +12,7 @@ import world.cepi.kstom.Manager
 import world.cepi.laboratory.generator.populator.TreePopulator
 import java.util.*
 
-internal object LaboratoryGenerator : ChunkGenerator {
+internal class LaboratoryGenerator : ChunkGenerator {
 
     internal val random = Random()
 
@@ -20,7 +20,7 @@ internal object LaboratoryGenerator : ChunkGenerator {
         JNoise.newBuilder().perlin().setInterpolation(InterpolationType.LINEAR).setSeed(random.nextInt().toLong())
             .setFrequency(0.2).build()
 
-    private val treeGen: TreePopulator = TreePopulator()
+    private val treeGen: TreePopulator = TreePopulator(this)
 
     fun getHeight(x: Int, z: Int): Int {
         val preHeight = jNoise.getNoise(x / 16.0, z / 16.0)

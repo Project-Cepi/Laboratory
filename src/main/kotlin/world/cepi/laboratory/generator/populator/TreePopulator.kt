@@ -10,10 +10,10 @@ import net.minestom.server.instance.block.Block
 import world.cepi.laboratory.generator.LaboratoryGenerator
 import world.cepi.laboratory.generator.Structure
 
-class TreePopulator : ChunkPopulator {
+internal class TreePopulator(val generator: LaboratoryGenerator) : ChunkPopulator {
 
     private val jNoise =
-        JNoise.newBuilder().perlin().setInterpolation(InterpolationType.LINEAR).setSeed(LaboratoryGenerator.random.nextInt().toLong())
+        JNoise.newBuilder().perlin().setInterpolation(InterpolationType.LINEAR).setSeed(generator.random.nextInt().toLong())
             .setFrequency(0.6).build()
 
     private val tree: Structure = Structure()
@@ -27,7 +27,7 @@ class TreePopulator : ChunkPopulator {
                         (j + chunk.chunkZ * 16).toDouble()
                     ) > 0.75
                 ) {
-                    val y = LaboratoryGenerator.getHeight(i + chunk.chunkX * 16, j + chunk.chunkZ * 16)
+                    val y = generator.getHeight(i + chunk.chunkX * 16, j + chunk.chunkZ * 16)
 
                     val position = Pos(i.toDouble(), y.toDouble(), j.toDouble())
 
