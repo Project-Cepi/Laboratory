@@ -7,7 +7,6 @@ import net.minestom.server.instance.Chunk
 import net.minestom.server.instance.ChunkPopulator
 import net.minestom.server.instance.batch.ChunkBatch
 import net.minestom.server.instance.block.Block
-import world.cepi.kstom.util.getBlockStateId
 import world.cepi.laboratory.generator.LaboratoryGenerator
 import world.cepi.laboratory.generator.Structure
 
