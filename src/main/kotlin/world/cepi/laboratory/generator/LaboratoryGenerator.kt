@@ -18,7 +18,7 @@ internal object LaboratoryGenerator : ChunkGenerator {
 
     private val jNoise =
         JNoise.newBuilder().perlin().setInterpolation(InterpolationType.LINEAR).setSeed(random.nextInt().toLong())
-            .setFrequency(0.4).build()
+            .setFrequency(0.2).build()
 
     private val treeGen: TreePopulator = TreePopulator()
 
