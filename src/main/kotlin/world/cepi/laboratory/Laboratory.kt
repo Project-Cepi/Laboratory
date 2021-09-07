@@ -45,19 +45,21 @@ object Laboratory {
 
         instance.setTag(Tag.Byte("lab"), 1)
 
-        player.setInstance(instance).thenAccept {
-            player.teleport(highestPointAt(instance))
+        instance.loadChunk(0,0).thenAccept {
+            player.setInstance(instance, highestPointAt(instance)).thenAccept {
+                player.teleport(highestPointAt(instance))
 
-            player.showTitle(
-                Title.title(
-                    Component.text("Welcome to your lab!", NamedTextColor.BLUE),
-                    Component.text("Invite friends using /lab invite <friend>", NamedTextColor.GRAY)
+                player.showTitle(
+                    Title.title(
+                        Component.text("Welcome to your lab!", NamedTextColor.BLUE),
+                        Component.text("Invite friends using /lab invite <friend>", NamedTextColor.GRAY)
+                    )
                 )
-            )
 
-            player.playSound(
-                Sound.sound(SoundEvent.ENTITY_PLAYER_LEVELUP, Sound.Source.MASTER, .5f, 1f)
-            )
+                player.playSound(
+                    Sound.sound(SoundEvent.ENTITY_PLAYER_LEVELUP, Sound.Source.MASTER, .5f, 1f)
+                )
+            }
         }
 
 
