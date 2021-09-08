@@ -30,8 +30,8 @@ object Laboratory {
         }
     }
 
-    fun highestPointAt(instance: Instance, x: Double = 0.0, z: Double = 0.0) =
-        (256 downTo 0).map { Pos(x, it.toDouble(), z) }.first { !instance.getBlock(it).isAir }
+    fun spawnPoint(instance: Instance, x: Double = 0.0, z: Double = 0.0) =
+        (256 downTo 0).map { Pos(x, it.toDouble(), z) }.first { instance.getBlock(it).isSolid }.add(0.0, 1.0, 0.0)
 
     fun create(player: Player) {
         val oldInstance = player.instance!!
@@ -45,10 +45,11 @@ object Laboratory {
 
         instance.setTag(Tag.Byte("lab"), 1)
 
-        instance.loadChunk(0,0).thenAccept {
-            player.setInstance(instance, highestPointAt(instance)).thenAccept {
-                player.teleport(highestPointAt(instance))
+        instance.loadChunk(0,0).thenRun {
 
+            player.respawnPoint = spawnPoint(instance)
+
+            player.setInstance(instance, player.respawnPoint).thenRun {
                 player.showTitle(
                     Title.title(
                         Component.text("Welcome to your lab!", NamedTextColor.BLUE),
@@ -59,6 +60,7 @@ object Laboratory {
                 player.playSound(
                     Sound.sound(SoundEvent.ENTITY_PLAYER_LEVELUP, Sound.Source.MASTER, .5f, 1f)
                 )
+
             }
         }
 
@@ -70,9 +72,9 @@ object Laboratory {
     fun send(player: Player, owner: Player) {
         if (!isLab(owner.instance!!)) return
 
-        player.setInstance(owner.instance!!).thenAccept {
-            player.teleport(highestPointAt(owner.instance!!))
+        player.respawnPoint = spawnPoint(owner.instance!!)
 
+        player.setInstance(owner.instance!!, player.respawnPoint).thenAccept {
             player.showTitle(
                 Title.title(
                     Component.text("Welcome to ${owner.username}'s lab!", NamedTextColor.BLUE),
