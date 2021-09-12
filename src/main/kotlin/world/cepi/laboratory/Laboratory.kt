@@ -7,6 +7,7 @@ import net.kyori.adventure.title.Title
 import net.minestom.server.coordinate.Pos
 import net.minestom.server.entity.Player
 import net.minestom.server.instance.Instance
+import net.minestom.server.instance.WorldBorder
 import net.minestom.server.sound.SoundEvent
 import net.minestom.server.tag.Tag
 import net.minestom.server.utils.time.TimeUnit
@@ -44,6 +45,11 @@ object Laboratory {
         instance.timeRate = 0
 
         instance.setTag(Tag.Byte("lab"), 1)
+
+        instance.worldBorder.apply {
+            setCenter(0f, 0f)
+            setDiameter(500.0, 0)
+        }
 
         instance.loadChunk(0,0).thenRun {
 
