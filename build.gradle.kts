@@ -41,10 +41,10 @@ dependencies {
     compileOnly("com.github.Minestom:Minestom:5ddd97cee2")
 
     // Add KStom
-    compileOnly("com.github.Project-Cepi:KStom:efa0e5fb97")
+    compileOnly("com.github.Project-Cepi:KStom:e3ddf8f437")
 
     // Add Kepi
-    compileOnly("com.github.Project-Cepi:Kepi:310b350848")
+    compileOnly("com.github.Project-Cepi:Kepi:ca0a18f870")
 
     // import kotlinx serialization
     compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
@@ -83,13 +83,13 @@ tasks {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
 }
 
 
 val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
+compileKotlin.kotlinOptions.jvmTarget = JavaVersion.VERSION_16.toString()
 
 compileKotlin.kotlinOptions {
     freeCompilerArgs = listOf("-Xinline-classes")
