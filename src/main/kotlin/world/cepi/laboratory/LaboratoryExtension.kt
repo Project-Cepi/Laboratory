@@ -1,8 +1,6 @@
 package world.cepi.laboratory
 
-import net.minestom.server.extensions.Extension;
-import world.cepi.kstom.command.register
-import world.cepi.kstom.command.unregister
+import net.minestom.server.extensions.Extension
 
 class LaboratoryExtension : Extension() {
 

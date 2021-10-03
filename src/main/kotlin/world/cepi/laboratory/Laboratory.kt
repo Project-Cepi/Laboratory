@@ -64,7 +64,7 @@ object Laboratory {
                 )
 
                 player.playSound(
-                    Sound.sound(SoundEvent.ENTITY_PLAYER_LEVELUP, Sound.Source.MASTER, .5f, 1f)
+                    Sound.sound(SoundEvent.BLOCK_BREWING_STAND_BREW, Sound.Source.MASTER, 2f, 2f)
                 )
 
             }
@@ -89,7 +89,7 @@ object Laboratory {
             )
 
             player.playSound(
-                Sound.sound(SoundEvent.ENTITY_PLAYER_LEVELUP, Sound.Source.MASTER, .5f, 1f)
+                Sound.sound(SoundEvent.BLOCK_BREWING_STAND_BREW, Sound.Source.MASTER, 2f, 2f)
             )
         }
     }
