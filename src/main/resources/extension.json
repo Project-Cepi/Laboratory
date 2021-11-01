@@ -2,6 +2,9 @@
   "entrypoint": "${project.group}.${project.mainClass}",
   "name": "${project.name}",
   "version": "${project.version}",
+  "meta": {
+    "downloadURL": "https://github.com/Project-Cepi/Laboratory/releases/download/latest/Laboratory-1.0.0-all.jar"
+  },
   "dependencies": [
     "KStom",
     "Kepi"
