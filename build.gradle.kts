@@ -47,7 +47,7 @@ dependencies {
     compileOnly("com.github.Project-Cepi:Kepi:ca0a18f870")
 
     // import kotlinx serialization
-    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
+    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.1")
 }
 tasks.withType<Test> {
     useJUnitPlatform()
